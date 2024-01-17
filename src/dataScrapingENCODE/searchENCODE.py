@@ -1,6 +1,6 @@
 ### header ###
 __author__ = "Evan Appleton"
-__email__ = "evan_appleton@hms.harvard.edu"
+__email__ = "evan.appleton@gmail.com"
 
 # Import dependencies
 import requests, json, os
