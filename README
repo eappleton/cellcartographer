@@ -1,0 +1,49 @@
+### This is the code repository for CellCartographer v1.0 ###
+
+#Listed here are dependencies needed to execute CellCartographer
+
+#CellCartographer is implemented as a combination of largely Python3 and shell scripting. (see more at https://github.com/eappleton/cellcartographer). 
+
+#Here is a list of required dependencies to run CellCartographer:
+gcc 6.2.0
+homer 4.9
+bowtie2 2.2.9
+star 2.7.9a
+python  3.6.0
+idr 2.0.2
+R 3.4.1
+
+#Here is a required list of Python packages:
+bio 0.2.1
+biopython 1.7
+certifi 2020.12.5
+chardet 4.0.0
+cycler 0.10.0
+distance 0.1.3
+idna 2.10
+joblib 1.0.0
+kiwisolver 1.3.1
+matplotlib 2.2.2
+matplotlib_venn 0.11.6
+numpy 1.14.5
+pandas 0.25.3
+Pillow 8.0.1
+pip 9.0.1
+pyparsing 2.4.7
+python_dateutil 2.8.1
+pytz 2020.4
+requests 2.25.1
+scikit_learn 0.23.2
+scipy 0.19.1
+seaborn 0.11.0
+setuptools 28.8.0
+six 1.15.0
+sklearn 0.0
+threadpoolctl 2.1.0
+urllib3 1.26.2
+
+#Here is a required list of R packages:
+ggplot2
+ggpubr
+svglite
+

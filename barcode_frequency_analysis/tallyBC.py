@@ -1,7 +1,7 @@
 ### This python script is used to take a list of barcodes from sequencing files and compare distance to list of known barcodes to tally apearance frequency using both Hamming and Levenstein distance
 
 __author__ = "Evan Appleton"
-__email__ = "evan_appleton@hms.harvard.edu"
+__email__ = "evan.appleton@gmail.com"
 
 ### imports ###
 import sys
