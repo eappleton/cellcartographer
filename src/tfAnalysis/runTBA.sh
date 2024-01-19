@@ -1,9 +1,5 @@
-#nProc=8
-#timestamp() {  STAMP=`date +%Y_%m_%d_%H_%M_%S`; }
-#timestamp
-#out="results_"$STAMP
-#mkdir ${out}
-#set -e
+#!/bin/bash
+
 cd tba/model_training
 
 ################## FULL EXAMPLE ##################

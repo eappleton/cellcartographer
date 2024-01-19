@@ -4,11 +4,13 @@
 set -e
 cd ../../src/controller
 
-### Perform RNAseq analysis for uploaded data ### 
+### Perform TBA analysis for all uploaded fastq files ### 
 
-export keyTermsRNA=';;;homo sapiens'
-export STAMP='clonal_rd3'
 export numFiles=3
 export nProc=8
 
-./RNASeq_DataUpload.sh
+export keyTermsTBA=';;;mus musculus'
+
+export STAMP='astrocyte'
+
+./TBA_DataUpload.sh

@@ -1,13 +1,4 @@
 #!/bin/bash
-#SBATCH -c 4                   # Request 16 cores
-#SBATCH -t 24:00:00             # Runtime in D-HH:MM format
-#SBATCH -p priority             # Partition to run in
-#SBATCH --mem-per-cpu=8G        # 16 GB memory needed (memory PER CORE)
-#SBATCH --open-mode=append      # append adds to outfile, truncate deletes first
-### In filenames, %j=jobid, %a=index in job array
-#SBATCH -o %j.out               # Standard out goes to this file
-#SBATCH -e %j.err               # Standard err goes to this file
-#SBATCH --mail-type=END         # Mail when the job ends
 
 #This script is for cross-validating TBA results with RNA-seq results
 #cd "resources/data/CrossValidate/"$STAMP

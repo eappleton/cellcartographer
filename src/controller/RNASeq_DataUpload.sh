@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #This script goes all the way from inputing an ENCODE keywords query to tba results
 #Expects the following environment variables:
 ### INPUTS ###
@@ -12,8 +13,7 @@ set -e
 #timestamp
 export STAMP=$STAMP
 
-#Query data from ENCODE and download for tba
-module load gcc/6.2.0 
+#module load gcc/6.2.0 
 
 #Move the data into the rnaSeqCrossValidationRPKM folder
 mv '../../uploaded_data/transcriptomics/'$STAMP '../rnaSeqAnalysis/rnaSeqCrossValidationRPKM/resources/data/fastq/'
@@ -34,14 +34,9 @@ elif [ "musmusculus" = "$(echo -e "${organism}" | tr -d '[[:space:]]')" ]; then
 fi
 
 #Runs RNA-seq analysis for each folder in the 'fastq' folder
-#Runs PEAR -> (merged fastq reads) ->  Bowtie2 -> (sam files) ->  HOMER -> (peaks file) -> RPKM files 
-./runRNASeqAnalysisENCODE_upload.sh
+#Fastq files ->  STAR -> (sam files) ->  HOMER -> (peaks file) -> RPKM files 
+./runRNASeqAnalysis.sh
 
-#Move results back into the testing and scratch folders
-#mkdir -p /n/scratch3/users/e/ema26/combinatorial_screen_software/test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/results/fastq
-mkdir -p /n/scratch3/users/e/ema26/combinatorial_screen_software/test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/results/HOMER
-mkdir -p /n/scratch3/users/e/ema26/combinatorial_screen_software/test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/results/IDR
-
+#Move results back into the testing folder
 mv "resources/data/fastq/"$STAMP ../../../uploaded_data/transcriptomics 
-mv "resources/data/HOMER/"$STAMP /n/scratch3/users/e/ema26/combinatorial_screen_software/test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/results/HOMER
 mv "resources/data/RPKM/"$STAMP ../../../test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/results/RPKM
