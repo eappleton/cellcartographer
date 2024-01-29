@@ -48,3 +48,61 @@ ggplot2
 ggpubr
 svglite
 
+#Post-installation, here are the basic usage cases and workflow
+#There are three processes run as input and procude difference sets of files as output
+
+# 1. RNAseq ONLY workflow
+# Fastq files -> STAR -> HOMER -> FPKM files
+
+This workflow takes in raw FASTQ data files and outputs an RPKM file. 
+
+In this use case, raw data is placed into the folder 'uploaded_data/transcriptomics' in a folder named for the cell type(s). Multiple folders may be present. If files are paired-end, the software will figure this out, otherwise single-end reads for each sample are acceptable.
+
+To initiate the workflow, the file 'runTestsRNAseq_Upload.sh' will be run. This file will need to be edited to find the correct data input folder:
+
+The following variables need to be adjusted to run
+
+keyTermsRNA=';;;[SPECIES]' --> SPECIES='homo sapiens' or SPECIES='mus musculus'
+export STAMP='rna_data_folder_name' 
+export numFiles=3 --> no need to change this
+export nProc=8 --> no need to change this, but may be modified to change the number of processors used to parallelize the runs
+
+FPKM output files will ultimately appear in the diretory 'test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/results/RPKM/STAMP'
+
+# 2. Epigenetics (ATAC/DNAse/ChIPseq) ONLY workflow
+# Fastq files -> Bowtie2 -> HOMER -> IDR -> TBA -> CellCartographer Tf output files
+
+This workflow takes in raw FASTQ data files and outputs a folder with a set of CellCartographer output files
+
+In this use case, raw data is placed into the folder 'uploaded_data/epigenetics' in a folder named for the cell type(s). Multiple folders may be present. If files are paired-end, the software will figure this out, otherwise single-end reads for each sample are acceptable.
+
+To initiate the workflow, the file 'runTestsTBA_Upload.sh' will be run. This file will need to be edited to find the correct data input folder: 
+
+The following variables need to be adjusted to run 
+
+keyTermsTBA=';;;[SPECIES]' --> SPECIES='homo sapiens' or SPECIES='mus musculus'
+export STAMP='rna_data_folder_name'
+export numFiles=3 --> no need to change this
+export nProc=8 --> no need to change this, but may be modified to change the number of processors used to parallelize the runs
+
+TBA output files will ultimately appear in the diretory 'test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/resources/data/CrossValidate/STAMP'
+
+# 3. Transcriptomics and Epigenetics (ATAC/DNAse/ChIPseq) workflow (MAIN CELLCARTOGRAPHER WORKFLOW)
+# Fastq files -> Bowtie2 -> HOMER -> IDR -> TBA -> CellCartographer Tf output files
+# Fastq files -> STAR -> HOMER -> FPKM files
+
+This workflow takes in raw FASTQ data files and outputs a folder with a set of CellCartographer output files
+
+In this use case, raw epigenetids data is placed into the folder 'uploaded_data/epigenetics' in a folder named for the cell type(s) and matching directories with data in 'uploaded_data/transcriptomics'. Multiple folders may be present. If files are paired-end, the software will figure this out, otherwise single-end reads for each sample are acceptable.
+
+To initiate the workflow, the file 'runTestsTBARNAseq_Upload.sh' will be run. This file will need to be edited to find the correct data input folder:   
+
+The following variables need to be adjusted to run   
+
+keyTermsRNA=';;;[SPECIES]' --> SPECIES='homo sapiens' or SPECIES='mus musculus'
+keyTermsTBA=';;;[SPECIES]' --> SPECIES='homo sapiens' or SPECIES='mus musculus'
+export STAMP='rna_data_folder_name'
+export numFiles=3 --> no need to change this
+export nProc=8 --> no need to change this, but may be modified to change the number of processors used to parallelize the runs
+
+TBA output files will ultimately appear in the diretory 'test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/resources/data/CrossValidate/STAMP'
