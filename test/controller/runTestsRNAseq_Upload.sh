@@ -6,9 +6,8 @@ cd ../../src/controller
 
 ### Perform RNAseq analysis for uploaded data ### 
 
-export keyTermsRNA=';;;homo sapiens'
-export STAMP='clonal_rd3'
-export numFiles=3
+export keyTermsRNA=';;;mus musculus'
+export STAMP='MG'
 export nProc=8
 
 ./RNASeq_DataUpload.sh

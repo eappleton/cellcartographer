@@ -9,7 +9,6 @@ cd ../../src/controller
 export keyTermsTBA=';;;mus musculus'
 export keyTermsRNA=';;;mus musculus'
 
-export numFiles=3
 export nProc=16
 export STAMP='MG'
 

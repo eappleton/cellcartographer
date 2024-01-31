@@ -11,6 +11,6 @@ export nProc=8
 
 export keyTermsTBA=';;;mus musculus'
 
-export STAMP='astrocyte'
+export STAMP='MG'
 
 ./TBA_DataUpload.sh
