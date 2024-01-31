@@ -5,6 +5,7 @@
 #CellCartographer is implemented as a combination of largely Python3 and shell scripting. (see more at https://github.com/eappleton/cellcartographer). 
 
 #Here is a list of required dependencies to run CellCartographer:
+sratoolkit 3.0.2
 gcc 6.2.0
 homer 4.9
 bowtie2 2.2.9
@@ -48,6 +49,17 @@ ggplot2
 ggpubr
 svglite
 
+#After basic installation, the following steps will remain to set up alignment indexes and python virtual environments
+-Download genome(s) of interest (this code is currently written assuming mm10 and hg38 genome builds, but others could be added)
+-Run 'cellcartographer/src/rnaSeqAnalysis/rnaSeqCrossValidation/resources/data/fastq/index/makeSTARindex.sh' after moving genomes to this folder
+-Run 'cellcartographer/src/rnaSeqAnalysis/tfAnalysis/resources/data/fastq/index/makeIndex.sh' after moving genomes to this folder
+-Run 'cellcartographer/src/rnaSeqAnalysis/tfAnalysis/tbaSetUp.sh'
+
+#At this point, all software is installed to run CellCartographer, so you may download some example data to test it out
+-Download RNAseq data to the folder 'uploaded_data/transcriptomics/(MY_CELL_TYPE)' using the script 'uploaded_data/download_data.sh' which has examples for how to download data from GEO and ENCODE using curl and example intermediate files listing the IDs of interest
+-Download RNAseq data to the folder 'uploaded_data/epigenetics/(MY_CELL_TYPE)' using the script 'uploaded_data/download_data.sh' which has examples for how to down
+load data from GEO and ENCODE using curl and example intermediate files listing the IDs of interest 
+
 #Post-installation, here are the basic usage cases and workflow
 #There are three processes run as input and procude difference sets of files as output
 
@@ -63,11 +75,14 @@ To initiate the workflow, the file 'runTestsRNAseq_Upload.sh' will be run. This 
 The following variables need to be adjusted to run
 
 keyTermsRNA=';;;[SPECIES]' --> SPECIES='homo sapiens' or SPECIES='mus musculus'
-export STAMP='rna_data_folder_name' 
-export numFiles=3 --> no need to change this
+export STAMP='MY_CELL_TYPE' 
 export nProc=8 --> no need to change this, but may be modified to change the number of processors used to parallelize the runs
 
 FPKM output files will ultimately appear in the diretory 'test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/results/RPKM/STAMP'
+
+An exmample output for microglia in a folder named MG exists there starting from SRA data:
+SRR3319495.fastq
+SRR3319496.fastq
 
 # 2. Epigenetics (ATAC/DNAse/ChIPseq) ONLY workflow
 # Fastq files -> Bowtie2 -> HOMER -> IDR -> TBA -> CellCartographer Tf output files
@@ -81,11 +96,17 @@ To initiate the workflow, the file 'runTestsTBA_Upload.sh' will be run. This fil
 The following variables need to be adjusted to run 
 
 keyTermsTBA=';;;[SPECIES]' --> SPECIES='homo sapiens' or SPECIES='mus musculus'
-export STAMP='rna_data_folder_name'
-export numFiles=3 --> no need to change this
+export STAMP='MY_CELL_TYPE'
 export nProc=8 --> no need to change this, but may be modified to change the number of processors used to parallelize the runs
 
 TBA output files will ultimately appear in the diretory 'test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/resources/data/CrossValidate/STAMP'
+
+An exmample output for microglia in a folder named MG exists there starting from SRA data:
+SRR6351241.fastq
+SRR6351242.fastq
+SRR6351243.fastq
+
+In this example, large files are excluded, but the gene rank, coefficient and performance files remain there
 
 # 3. Transcriptomics and Epigenetics (ATAC/DNAse/ChIPseq) workflow (MAIN CELLCARTOGRAPHER WORKFLOW)
 # Fastq files -> Bowtie2 -> HOMER -> IDR -> TBA -> CellCartographer Tf output files
@@ -101,8 +122,18 @@ The following variables need to be adjusted to run
 
 keyTermsRNA=';;;[SPECIES]' --> SPECIES='homo sapiens' or SPECIES='mus musculus'
 keyTermsTBA=';;;[SPECIES]' --> SPECIES='homo sapiens' or SPECIES='mus musculus'
-export STAMP='rna_data_folder_name'
-export numFiles=3 --> no need to change this
+export STAMP='MY_CELL_TYPE'
 export nProc=8 --> no need to change this, but may be modified to change the number of processors used to parallelize the runs
 
 TBA output files will ultimately appear in the diretory 'test/rnaSeqAnalysis/rnaSeqCrossValidationRPKM/resources/data/CrossValidate/STAMP'
+
+An exmample output for microglia in a folder named MG exists there starting from SRA data:
+(Epigenetics)
+SRR6351241.fastq
+SRR6351242.fastq
+SRR6351243.fastq
+(Transcriptomics)
+SRR3319495.fastq
+SRR3319496.fastq
+
+In this example, large files are excluded, but the gene rank, coefficient and performance files remain there

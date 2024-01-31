@@ -1,0 +1,5 @@
+/files/ENCFF670CEF/@@download/ENCFF670CEF.fastq.gz
+/files/ENCFF858XAB/@@download/ENCFF858XAB.fastq.gz
+/files/ENCFF751ZMF/@@download/ENCFF751ZMF.fastq.gz
+/files/ENCFF526JST/@@download/ENCFF526JST.fastq.gz
+/files/ENCFF252KUD/@@download/ENCFF252KUD.fastq.gz

@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#This script creates STAR indexes for alignments
-module load gcc/6.2.0
-module load star/2.7.9a
-
-#export nProc=8
-
 STAR --runThreadN 8 \
 --runMode genomeGenerate \
 --genomeDir hg38 \

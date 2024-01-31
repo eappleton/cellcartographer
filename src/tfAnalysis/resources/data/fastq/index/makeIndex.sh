@@ -1,2 +1,3 @@
-module load seq/bowtie/2.2.4
+#!/bin/bash
+
 bowtie2-build hg38.fa hg38
