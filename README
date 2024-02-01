@@ -12,7 +12,7 @@ bowtie2 2.2.9
 star 2.7.9a
 python  3.6.8
 idr 2.0.2
-R 3.4.1
+R 4.2.1
 
 #Here is a required list of Python packages:
 argparse
@@ -45,12 +45,13 @@ threadpoolctl 2.1.0
 urllib3 1.26.2
 
 #Here is a required list of R packages:
-ggplot2
-ggpubr
-svglite
+ggplot2 3.4.2
+ggpubr 0.6.0
+svglite 2.1.1
 
 #After basic installation, the following steps will remain to set up alignment indexes and python virtual environments
 -Download genome(s) of interest (this code is currently written assuming mm10 and hg38 genome builds, but others could be added)
+-If alternate genomes and/or species are added, source code will need to be tweaked to point to proper indexes from input
 -Run 'cellcartographer/src/rnaSeqAnalysis/rnaSeqCrossValidation/resources/data/fastq/index/makeSTARindex.sh' after moving genomes to this folder
 -Run 'cellcartographer/src/rnaSeqAnalysis/tfAnalysis/resources/data/fastq/index/makeIndex.sh' after moving genomes to this folder
 -Run 'cellcartographer/src/rnaSeqAnalysis/tfAnalysis/tbaSetUp.sh'
